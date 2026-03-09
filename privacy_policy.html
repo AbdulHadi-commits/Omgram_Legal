@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Omegram – Privacy Policy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pink: #E91E8C;
+      --pink-light: #fce4f3;
+      --dark: #0f0f0f;
+      --mid: #2a2a2a;
+      --text: #1a1a1a;
+      --muted: #666;
+      --bg: #fafafa;
+      --border: #e8e8e8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--dark);
+      color: #fff;
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 3px solid var(--pink);
+    }
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .logo-mark {
+      width: 38px; height: 38px;
+      background: var(--pink);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .logo-text {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+      letter-spacing: 0.5px;
+    }
+    .header-badge {
+      margin-left: auto;
+      font-size: 11px;
+      font-weight: 500;
+      background: rgba(233,30,140,0.18);
+      color: #f06ab8;
+      border: 1px solid rgba(233,30,140,0.3);
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--dark);
+      color: #fff;
+      padding: 64px 32px 56px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .hero h1 em {
+      color: var(--pink);
+      font-style: italic;
+    }
+    .hero p {
+      color: #aaa;
+      font-size: 15px;
+      max-width: 520px;
+      margin: 0 auto 24px;
+    }
+    .hero-meta {
+      display: inline-flex;
+      gap: 24px;
+      font-size: 13px;
+      color: #888;
+    }
+    .hero-meta span { display: flex; align-items: center; gap: 6px; }
+    .dot { width: 6px; height: 6px; background: var(--pink); border-radius: 50%; display: inline-block; }
+
+    /* ── Layout ── */
+    .page-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      position: sticky;
+      top: 72px;
+      padding-top: 40px;
+    }
+    .toc-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .toc ul { list-style: none; }
+    .toc li { margin-bottom: 2px; }
+    .toc a {
+      font-size: 13.5px;
+      color: var(--muted);
+      text-decoration: none;
+      display: block;
+      padding: 5px 0 5px 12px;
+      border-left: 2px solid transparent;
+      transition: all 0.2s;
+      line-height: 1.4;
+    }
+    .toc a:hover {
+      color: var(--pink);
+      border-left-color: var(--pink);
+    }
+
+    /* ── Content ── */
+    .content { padding-top: 40px; }
+
+    section { margin-bottom: 52px; scroll-margin-top: 80px; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--pink);
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 16px;
+      line-height: 1.25;
+    }
+    p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    p:last-child { margin-bottom: 0; }
+
+    ul.policy-list {
+      list-style: none;
+      margin: 12px 0 14px;
+    }
+    ul.policy-list li {
+      font-size: 15px;
+      color: #333;
+      padding: 7px 0 7px 20px;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+    }
+    ul.policy-list li:last-child { border-bottom: none; }
+    ul.policy-list li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 6px; height: 6px;
+      background: var(--pink);
+      border-radius: 50%;
+    }
+
+    .callout {
+      background: var(--pink-light);
+      border-left: 4px solid var(--pink);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 14.5px;
+      color: #7a0048;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .info-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+    }
+    .info-card .label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 4px; }
+    .info-card .value { font-size: 14px; font-weight: 500; color: var(--dark); }
+
+    hr.section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 0 52px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--dark);
+      color: #888;
+      text-align: center;
+      padding: 36px 32px;
+      font-size: 13.5px;
+    }
+    footer a { color: var(--pink); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .footer-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 720px) {
+      .page-wrap { grid-template-columns: 1fr; gap: 0; padding: 0 20px 60px; }
+      .toc { display: none; }
+      .hero { padding: 40px 20px 36px; }
+      .header-inner { padding: 14px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo-mark">O</div>
+    <span class="logo-text">Omegram</span>
+    <span class="header-badge">Legal</span>
+  </div>
+</header>
+
+<div class="hero">
+  <h1>Privacy <em>Policy</em></h1>
+  <p>How we collect, use, and protect your personal information when you use Omegram.</p>
+  <div class="hero-meta">
+    <span><span class="dot"></span> Effective: January 1, 2024</span>
+    <span><span class="dot"></span> Last Updated: March 2026</span>
+    <span><span class="dot"></span> Türkiye</span>
+  </div>
+</div>
+
+<div class="page-wrap">
+
+  <!-- Table of Contents -->
+  <aside class="toc">
+    <div class="toc-title">Contents</div>
+    <ul>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#definitions">Definitions</a></li>
+      <li><a href="#collection">What We Collect</a></li>
+      <li><a href="#use">How We Use It</a></li>
+      <li><a href="#sharing">Sharing Information</a></li>
+      <li><a href="#security">Security</a></li>
+      <li><a href="#rights">Your Rights</a></li>
+      <li><a href="#children">Children's Privacy</a></li>
+      <li><a href="#gdpr">GDPR</a></li>
+      <li><a href="#california">California (CCPA)</a></li>
+      <li><a href="#cookies">Cookies</a></li>
+      <li><a href="#changes">Policy Changes</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="content">
+
+    <section id="overview">
+      <div class="section-label">Introduction</div>
+      <h2>Overview</h2>
+      <p>OMEGRAM ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how your personal information is collected, used, and disclosed when you use our mobile application and related services (collectively, the "Service").</p>
+      <p>By accessing or using the Service, you agree to the collection, storage, use, and disclosure of your personal information as described in this Privacy Policy.</p>
+      <div class="callout">
+        If you do not agree with the terms of this Privacy Policy, please do not use our Service.
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <section id="definitions">
+      <div class="section-label">Terminology</div>
+      <h2>Definitions &amp; Key Terms</h2>
+      <p>Throughout this document, the following terms are used as defined below:</p>
+      <ul class="policy-list">
+        <li><strong>Cookie:</strong> Small data generated by a website and saved by your browser; used to identify your browser, provide analytics, and remember preferences.</li>
+        <li><strong>Company / We / Us / Our:</strong> OMEGRAM, the entity responsible for your data under this Privacy Policy.</li>
+        <li><strong>Country:</strong> Türkiye, where OMEGRAM is based.</li>
+        <li><strong>Device:</strong> Any internet-connected device (phone, tablet, computer) used to access the Service.</li>
+        <li><strong>IP Address:</strong> A unique number assigned to every internet-connected device, often indicating approximate location.</li>
+        <li><strong>Personal Data:</strong> Any information that directly or indirectly identifies a natural person.</li>
+        <li><strong>Service:</strong> The OMEGRAM mobile application and any associated platforms or subdomains.</li>
+        <li><strong>You:</strong> The individual registered with or using OMEGRAM's Services.</li>
+      </ul>
+    </section>
+
+    <hr class="section-divider">
+
+    <section id="collection">
+      <div class="section-label">Data Collection</div>
+      <h2>What Information Do We Collect?</h2>
+      <p>We collect information when you register, use the Service, or interact with our features.</p>
+
+      <p><strong>Account &amp; Identity Information:</strong></p>
+      <ul class="policy-list">
+        <li>Name and username</li>
+        <li>Email address</li>
+        <li>Password (stored encrypted)</li>
+        <li>Profile photo</li>
+        <li>Date of birth / Age</li>
+      </ul>
+
+      <p style="margin-top:16px"><strong>Device &amp; Usage Information:</strong></p>
+      <ul class="policy-list">
+        <li>Device type, operating system, and identifiers</li>
+        <li>IP address and approximate location</li>
+        <li>App usage data and interactions</li>
+        <li>Firebase Cloud Messaging token (for push notifications)</li>
+      </ul>
+
+      <p style="margin-top:16px"><strong>Optional Device Permissions (you control these):</strong></p>
+      <ul class="policy-list">
+        <li><strong>Camera:</strong> Required for video chat and uploading profile/post photos. You can deny camera access and still use most features.</li>
+        <li><strong>Microphone:</strong> Required for video and audio chat features only.</li>
+        <li><strong>Photo Gallery:</strong> Required only when uploading images from your device. You may deny this permission.</li>
+      </ul>
+
+      <p style="margin-top:16px"><strong>Payment &amp; Transaction Data:</strong></p>
+      <ul class="policy-list">
+        <li>In-app purchase records (processed via Apple App Store / Google Play — we do not store card details)</li>
+        <li>Coin balance and transaction history within the app</li>
+      </ul>
+    </section>
+
+    <hr class="section-divider">
+
+    <section id="use">
+      <div class="section-label">Data Usage</div>
+      <h2>How Do We Use Your Information?</h2>
+      <ul class="policy-list">
+        <li>To create and manage your account</li>
+        <li>To provide and operate the Service, including video chat matching</li>
+        <li>To process in-app purchases and coin transactions</li>
+        <li>To send push notifications about activity relevant to you</li>
+        <li>To enforce our community standards and detect abuse</li>
+        <li>To improve app performance and fix bugs</li>
+        <li>To comply with legal obligations</li>
+        <li>To respond to support requests</li>
+      </ul>
+      <p>We do not sell your personal data to advertisers or third-party marketing companies.</p>
+    </section>
+
+    <hr class="section-divider">
+
+    <section id="sharing">
+      <div class="section-label">Third Parties</div>
+      <h2>Sharing Your Information</h2>
+      <p>We may share information with trusted service providers who help us operate the Service, under strict confidentiality agreements. These include:</p>
+      <ul class="policy-list">
+        <li><strong>Firebase (Google):</strong> Authentication, push notifications, and crash reporting</li>
+        <li><strong>Apple / Google Play:</strong> In-app purchase processing</li>
+        <li><strong>Cloud hosting providers:</strong> For server infrastructure</li>
+      </ul>
+      <p>We may disclose personal information to government or law enforcement authorities when required by law, court order, or to protect the safety of our users.</p>
+      <p>We do not share your personal information for third-party advertising purposes.</p>
+    </section>
+
+    <hr class="section-divider">
+
+    <section id="security">
+      <div class="section-label">Data Protection</div>
+      <h2>Security of Your Information</h2>
+      <p>We implement physical, electronic, and procedural safeguards to protect your personal information, including:</p>
+      <ul class="policy-list">
+        <li>Encrypted data transmission (HTTPS/TLS)</li>
+        <li>Hashed and salted password storage</li>
+        <li>JWT-based authentication tokens</li>
+        <li>Access controls limiting who can view your data</li>
+      </ul>
+      <p>However, no security system is perfect. We cannot guarantee absolute security. If a data breach occurs that is likely to affect your rights, we will notify you as required by applicable law.</p>
+    </section>
+
+    <hr class="section-divider">
+
+    <section id="rights">
+      <div class="section-label">User Rights</div>
+      <h2>Your Rights &amp; Choices</h2>
+      <p>Depending on your location, you may have the following rights regarding your personal data:</p>
+      <ul class="policy-list">
+        <li><strong>Access:</strong> Request a copy of the personal data we hold about you</li>
+        <li><strong>Correction:</strong> Request correction of inaccurate data</li>
+        <li><strong>Deletion:</strong> Request deletion of your account and personal data</li>
+        <li><strong>Restriction:</strong> Request that we limit how we use your data</li>
+        <li><strong>Portability:</strong> Request your data in a portable format</li>
+        <li><strong>Objection:</strong> Object to certain types of processing</li>
+      </ul>
+      <p>To exercise any of these rights, contact us at <a href="mailto:omegramdev@gmail.com" style="color:var(--pink)">omegramdev@gmail.com</a>. We will respond within 30 days.</p>
+      <p>You may delete your account at any time through the app's Settings page. Upon deletion, your personal data will be removed from our active systems within 60 days.</p>
+    </section>
+
+    <hr class="section-divider">
+
+    <section id="children">
+      <div class="section-label">Child Safety</div>
+      <h2>Children's Privacy</h2>
+      <div class="callout">
+        Omegram is strictly intended for users aged 18 and older. We do not knowingly collect personal information from anyone under 18.
+      </div>
+      <p>Our Service is designed for adults only. We do not direct the Service to children. If you are a parent or guardian and believe your child has provided us with personal data, please contact us immediately at <a href="mailto:omegramdev@gmail.com" style="color:var(--pink)">omegramdev@gmail.com</a>.</p>
+      <p>Upon confirmation, we will promptly delete the minor's information from our systems. Users found to be under 18 will have their accounts suspended and data removed.</p>
+      <p>See our full <a href="child_safety.html" style="color:var(--pink)">Child Safety Policy</a> for complete details.</p>
+    </section>
+
+    <hr class="section-divider">
+
+    <section id="gdpr">
+      <div class="section-label">European Users</div>
+      <h2>GDPR (European Economic Area)</h2>
+      <p>If you are located in the European Economic Area (EEA), you have additional rights under the General Data Protection Regulation (GDPR).</p>
+      <p><strong>Legal bases for processing your data:</strong></p>
+      <ul class="policy-list">
+        <li><strong>Contract performance:</strong> Processing necessary to provide the Service you signed up for</li>
+        <li><strong>Legitimate interests:</strong> Security, fraud prevention, service improvement</li>
+        <li><strong>Legal obligation:</strong> Compliance with applicable laws</li>
+        <li><strong>Consent:</strong> Where you have given explicit consent (e.g., marketing communications)</li>
+      </ul>
+      <p>We retain your data only as long as necessary to fulfill the purposes described in this policy. You may contact us at any time to exercise your GDPR rights.</p>
+      <p>We store data on servers that may be located outside the EEA. Where we transfer data internationally, we ensure appropriate safeguards are in place.</p>
+    </section>
+
+    <hr class="section-divider">
+
+    <section id="california">
+      <div class="section-label">US Users</div>
+      <h2>California Residents (CCPA / CalOPPA)</h2>
+      <p>California residents have the following rights under the California Consumer Privacy Act (CCPA):</p>
+      <ul class="policy-list">
+        <li><strong>Right to Know:</strong> The categories of personal information we collect, use, and share</li>
+        <li><strong>Right to Delete:</strong> Request deletion of your personal information</li>
+        <li><strong>Right to Opt-Out:</strong> We do not sell personal information — there is nothing to opt out of</li>
+        <li><strong>Right to Non-Discrimination:</strong> We will not discriminate against you for exercising your CCPA rights</li>
+      </ul>
+      <p>To submit a CCPA request, contact us at <a href="mailto:omegramdev@gmail.com" style="color:var(--pink)">omegramdev@gmail.com</a>. We respond within 45 days.</p>
+    </section>
+
+    <hr class="section-divider">
+
+    <section id="cookies">
+      <div class="section-label">Tracking</div>
+      <h2>Cookies &amp; Tracking Technologies</h2>
+      <p>The Omegram mobile application does not use browser cookies. We use the following equivalent technologies:</p>
+      <ul class="policy-list">
+        <li><strong>Local Storage (SharedPreferences):</strong> To remember your login session and app preferences on your device</li>
+        <li><strong>Firebase Analytics:</strong> Aggregated, anonymized usage statistics to improve the app</li>
+        <li><strong>Firebase Crashlytics:</strong> Crash reports to help us fix bugs</li>
+      </ul>
+      <p>You can clear app data through your device's Settings at any time, which will remove locally stored data.</p>
+    </section>
+
+    <hr class="section-divider">
+
+    <section id="changes">
+      <div class="section-label">Updates</div>
+      <h2>Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. When we make significant changes, we will notify you through the app or by email at least 7 days before the changes take effect.</p>
+      <p>The "Last Updated" date at the top of this page will always reflect the most recent revision. Continued use of the Service after changes take effect constitutes acceptance of the updated policy.</p>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="label">Policy Version</div>
+          <div class="value">2.0 (March 2026)</div>
+        </div>
+        <div class="info-card">
+          <div class="label">Governing Law</div>
+          <div class="value">Republic of Türkiye</div>
+        </div>
+        <div class="info-card">
+          <div class="label">Data Controller</div>
+          <div class="value">OMEGRAM</div>
+        </div>
+        <div class="info-card">
+          <div class="label">Response Time</div>
+          <div class="value">Within 30 days</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <section id="contact">
+      <div class="section-label">Get In Touch</div>
+      <h2>Contact Us</h2>
+      <p>If you have questions, concerns, or requests regarding this Privacy Policy or your personal data, please contact us:</p>
+      <ul class="policy-list">
+        <li><strong>Email:</strong> <a href="mailto:omegramdev@gmail.com" style="color:var(--pink)">omegramdev@gmail.com</a></li>
+        <li><strong>App:</strong> Settings → Help → Contact Support</li>
+        <li><strong>Response time:</strong> We aim to respond within 5 business days</li>
+      </ul>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div class="footer-logo">Omegram</div>
+  <p>© 2024–2026 OMEGRAM. All rights reserved.</p>
+  <p style="margin-top:8px">
+    <a href="privacy_policy.html">Privacy Policy</a> &nbsp;·&nbsp;
+    <a href="child_safety.html">Child Safety Policy</a> &nbsp;·&nbsp;
+    <a href="mailto:omegramdev@gmail.com">Contact</a>
+  </p>
+</footer>
+
+</body>
+</html>

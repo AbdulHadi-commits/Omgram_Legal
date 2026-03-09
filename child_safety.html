@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Omegram – Child Safety Policy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pink: #E91E8C;
+      --pink-light: #fce4f3;
+      --dark: #0f0f0f;
+      --text: #1a1a1a;
+      --muted: #666;
+      --bg: #fafafa;
+      --border: #e8e8e8;
+      --warning: #fff3cd;
+      --warning-border: #f59e0b;
+      --warning-text: #7c4a00;
+      --safe: #ecfdf5;
+      --safe-border: #10b981;
+      --safe-text: #064e3b;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    header {
+      background: var(--dark);
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 3px solid var(--pink);
+    }
+    .header-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .logo-mark {
+      width: 38px; height: 38px;
+      background: var(--pink);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .logo-text { font-family: 'DM Serif Display', serif; font-size: 22px; }
+    .header-badge {
+      margin-left: auto;
+      font-size: 11px;
+      font-weight: 500;
+      background: rgba(233,30,140,0.18);
+      color: #f06ab8;
+      border: 1px solid rgba(233,30,140,0.3);
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      background: var(--dark);
+      color: #fff;
+      padding: 64px 32px 56px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(30px, 5vw, 48px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .hero h1 em { color: var(--pink); font-style: italic; }
+    .hero p { color: #aaa; font-size: 15px; max-width: 520px; margin: 0 auto 24px; }
+    .hero-meta {
+      display: inline-flex;
+      gap: 24px;
+      font-size: 13px;
+      color: #888;
+    }
+    .hero-meta span { display: flex; align-items: center; gap: 6px; }
+    .dot { width: 6px; height: 6px; background: var(--pink); border-radius: 50%; display: inline-block; }
+
+    /* ── Age gate banner ── */
+    .age-banner {
+      background: #1a0010;
+      border: 2px solid var(--pink);
+      border-radius: 0;
+      padding: 20px 32px;
+      text-align: center;
+      color: #f9a8d4;
+      font-weight: 500;
+      font-size: 15px;
+      letter-spacing: 0.3px;
+    }
+    .age-banner strong { color: #fff; font-size: 17px; }
+
+    .page-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 32px 80px;
+    }
+
+    section { margin-bottom: 52px; scroll-margin-top: 80px; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--pink);
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 16px;
+      line-height: 1.25;
+    }
+    p { margin-bottom: 14px; color: #333; font-size: 15px; }
+    p:last-child { margin-bottom: 0; }
+
+    ul.policy-list { list-style: none; margin: 12px 0 14px; }
+    ul.policy-list li {
+      font-size: 15px;
+      color: #333;
+      padding: 8px 0 8px 20px;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+    }
+    ul.policy-list li:last-child { border-bottom: none; }
+    ul.policy-list li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 6px; height: 6px;
+      background: var(--pink);
+      border-radius: 50%;
+    }
+
+    .callout-warning {
+      background: var(--warning);
+      border-left: 4px solid var(--warning-border);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 14.5px;
+      color: var(--warning-text);
+    }
+    .callout-safe {
+      background: var(--safe);
+      border-left: 4px solid var(--safe-border);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 14.5px;
+      color: var(--safe-text);
+    }
+    .callout-pink {
+      background: var(--pink-light);
+      border-left: 4px solid var(--pink);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 14.5px;
+      color: #7a0048;
+    }
+
+    .commitment-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 20px 0;
+    }
+    .commitment-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .commitment-card .icon {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    .commitment-card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+    .commitment-card p {
+      font-size: 13.5px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    hr.section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 0 52px;
+    }
+
+    .report-box {
+      background: var(--dark);
+      color: #fff;
+      border-radius: 14px;
+      padding: 32px;
+      text-align: center;
+      margin: 24px 0;
+    }
+    .report-box h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+    .report-box p { color: #aaa; font-size: 14.5px; margin-bottom: 20px; }
+    .report-box a {
+      display: inline-block;
+      background: var(--pink);
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 15px;
+      transition: opacity 0.2s;
+    }
+    .report-box a:hover { opacity: 0.85; }
+
+    footer {
+      background: var(--dark);
+      color: #888;
+      text-align: center;
+      padding: 36px 32px;
+      font-size: 13.5px;
+    }
+    footer a { color: var(--pink); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .footer-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 640px) {
+      .commitment-grid { grid-template-columns: 1fr; }
+      .page-wrap { padding: 32px 20px 60px; }
+      .header-inner { padding: 14px 20px; }
+      .age-banner { padding: 16px 20px; }
+      .hero { padding: 40px 20px 36px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo-mark">O</div>
+    <span class="logo-text">Omegram</span>
+    <span class="header-badge">Child Safety</span>
+  </div>
+</header>
+
+<div class="age-banner">
+  <strong>🔞 Omegram is strictly for users aged 18 and older.</strong><br>
+  We do not permit minors to use our platform under any circumstances.
+</div>
+
+<div class="hero">
+  <h1>Child Safety <em>Policy</em></h1>
+  <p>Our commitments to protecting children and preventing exploitation or abuse on the Omegram platform.</p>
+  <div class="hero-meta">
+    <span><span class="dot"></span> Effective: January 1, 2024</span>
+    <span><span class="dot"></span> Last Updated: March 2026</span>
+  </div>
+</div>
+
+<div class="page-wrap">
+
+  <section id="commitment">
+    <div class="section-label">Our Commitment</div>
+    <h2>Zero Tolerance for Child Exploitation</h2>
+    <p>Omegram has a strict zero-tolerance policy toward any content, behavior, or activity that sexualizes, exploits, endangers, or involves minors in any way. This policy is absolute, non-negotiable, and applies to all users, all content types, and all features of the platform.</p>
+
+    <div class="commitment-grid">
+      <div class="commitment-card">
+        <div class="icon">🔞</div>
+        <h3>Adults Only Platform</h3>
+        <p>Omegram is designed exclusively for users aged 18 and older. No features or content are directed at children.</p>
+      </div>
+      <div class="commitment-card">
+        <div class="icon">🚫</div>
+        <h3>CSAM Prohibition</h3>
+        <p>Child Sexual Abuse Material (CSAM) is absolutely prohibited. Any detected instance is immediately reported to authorities.</p>
+      </div>
+      <div class="commitment-card">
+        <div class="icon">🛡️</div>
+        <h3>Active Moderation</h3>
+        <p>Our admin panel enables active content moderation and rapid removal of reported content involving minors.</p>
+      </div>
+      <div class="commitment-card">
+        <div class="icon">📞</div>
+        <h3>Report &amp; Respond</h3>
+        <p>We provide clear reporting mechanisms and respond to child safety reports within 24 hours.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <section id="age-restriction">
+    <div class="section-label">Age Requirements</div>
+    <h2>Age Restriction &amp; Verification</h2>
+    <p>Omegram is an 18+ platform. All users must confirm they are 18 years of age or older during the registration process.</p>
+
+    <div class="callout-warning">
+      <strong>⚠️ Important:</strong> Users who are found to be under 18 will have their accounts permanently suspended and all associated data will be deleted immediately.
+    </div>
+
+    <p><strong>Age enforcement measures include:</strong></p>
+    <ul class="policy-list">
+      <li>Age confirmation during account registration</li>
+      <li>Reporting mechanisms allowing other users to flag suspected underage accounts</li>
+      <li>Admin-level account review and suspension capability</li>
+      <li>Permanent ban on accounts confirmed to belong to minors</li>
+    </ul>
+
+    <p>We acknowledge that no age verification system is completely infallible. We strongly encourage parents and guardians to monitor their children's device activity and report any suspected use of Omegram by a minor immediately.</p>
+  </section>
+
+  <hr class="section-divider">
+
+  <section id="prohibited">
+    <div class="section-label">What Is Prohibited</div>
+    <h2>Prohibited Content &amp; Behavior</h2>
+    <p>The following are strictly prohibited on Omegram and will result in immediate account termination and, where applicable, reporting to law enforcement:</p>
+
+    <ul class="policy-list">
+      <li>Any content depicting, describing, or simulating the sexual exploitation of minors (CSAM)</li>
+      <li>Grooming behavior — using the platform to build inappropriate relationships with minors</li>
+      <li>Soliciting personal information from users who appear to be under 18</li>
+      <li>Sharing or distributing content that sexualizes individuals under 18</li>
+      <li>Using Omegram to recruit or direct minors to any external platform or communication channel</li>
+      <li>Any form of coercion, manipulation, or trafficking targeting minors</li>
+      <li>Impersonating a minor or misrepresenting one's age to circumvent our policies</li>
+    </ul>
+
+    <div class="callout-pink">
+      <strong>Legal Notice:</strong> Content that sexually exploits minors is illegal in virtually every jurisdiction. We cooperate fully with law enforcement agencies worldwide. IP addresses, account data, and content logs will be provided to authorities upon lawful request.
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <section id="enforcement">
+    <div class="section-label">How We Enforce</div>
+    <h2>Detection &amp; Enforcement</h2>
+    <p>We use the following measures to detect and address violations of this Child Safety Policy:</p>
+
+    <ul class="policy-list">
+      <li><strong>User reporting:</strong> Any post, story, profile, or chat can be reported directly within the app</li>
+      <li><strong>Admin review:</strong> Our admin panel provides tools to review reported content and take action</li>
+      <li><strong>Verified-user posting:</strong> Only verified (blue-tick) users can publish posts and stories, reducing anonymous abuse</li>
+      <li><strong>Account suspension:</strong> Accounts violating this policy are permanently suspended without appeal</li>
+      <li><strong>Data preservation:</strong> Relevant account data is preserved for law enforcement upon request</li>
+    </ul>
+
+    <div class="callout-safe">
+      <strong>✅ CSAM Reporting:</strong> Any confirmed Child Sexual Abuse Material discovered on our platform will be immediately reported to the <strong>National Center for Missing and Exploited Children (NCMEC)</strong> via their CyberTipline, in compliance with 18 U.S.C. § 2258A, as well as to relevant Turkish authorities.
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <section id="parental">
+    <div class="section-label">For Parents & Guardians</div>
+    <h2>Parental Guidance</h2>
+    <p>If you are a parent or guardian and believe your child has created an account on Omegram or has been exposed to harmful content on our platform, please act immediately:</p>
+
+    <ul class="policy-list">
+      <li>Contact us at <a href="mailto:omegramdev@gmail.com" style="color:var(--pink)">omegramdev@gmail.com</a> with the subject line "MINOR ACCOUNT REPORT"</li>
+      <li>Provide the username or registered email address if known</li>
+      <li>We will suspend the account within 24 hours of a confirmed minor report</li>
+      <li>All personal data associated with the minor will be permanently deleted within 72 hours of confirmation</li>
+    </ul>
+
+    <p>We also recommend contacting your local law enforcement or child protection agency if you believe your child has been the victim of exploitation or abuse facilitated through any online platform.</p>
+  </section>
+
+  <hr class="section-divider">
+
+  <section id="resources">
+    <div class="section-label">External Resources</div>
+    <h2>Child Safety Resources</h2>
+    <p>If you or someone you know has encountered child exploitation material or behavior, please use these official reporting channels in addition to contacting us:</p>
+    <ul class="policy-list">
+      <li><strong>NCMEC CyberTipline (USA):</strong> <a href="https://www.missingkids.org/gethelpnow/cybertipline" target="_blank" rel="noopener" style="color:var(--pink)">www.missingkids.org/cybertipline</a></li>
+      <li><strong>Internet Watch Foundation (UK/EU):</strong> <a href="https://www.iwf.org.uk" target="_blank" rel="noopener" style="color:var(--pink)">www.iwf.org.uk</a></li>
+      <li><strong>Türkiye – BTK (Information and Communication Technologies Authority):</strong> <a href="https://www.ihbarweb.org.tr" target="_blank" rel="noopener" style="color:var(--pink)">www.ihbarweb.org.tr</a></li>
+      <li><strong>INHOPE Global Network:</strong> <a href="https://www.inhope.org" target="_blank" rel="noopener" style="color:var(--pink)">www.inhope.org</a></li>
+    </ul>
+  </section>
+
+  <hr class="section-divider">
+
+  <section id="report">
+    <div class="section-label">Report Immediately</div>
+    <h2>Report a Violation</h2>
+    <div class="report-box">
+      <h3>See something? Report it immediately.</h3>
+      <p>If you encounter any content or behavior on Omegram that you believe endangers or exploits a child, please contact us right away. We treat every report seriously and respond within 24 hours.</p>
+      <a href="mailto:omegramdev@gmail.com?subject=CHILD%20SAFETY%20REPORT">Report Now — omegramdev@gmail.com</a>
+    </div>
+    <p style="text-align:center; font-size:13.5px; color:var(--muted); margin-top:16px">
+      For emergencies involving immediate risk to a child, always contact your local emergency services (911, 112, etc.) first.
+    </p>
+  </section>
+
+  <hr class="section-divider">
+
+  <section id="contact">
+    <div class="section-label">Policy Information</div>
+    <h2>Contact &amp; Policy Details</h2>
+    <ul class="policy-list">
+      <li><strong>Policy Owner:</strong> OMEGRAM</li>
+      <li><strong>Governing Law:</strong> Republic of Türkiye</li>
+      <li><strong>Contact:</strong> <a href="mailto:omegramdev@gmail.com" style="color:var(--pink)">omegramdev@gmail.com</a></li>
+      <li><strong>Response Time:</strong> Child safety reports responded to within 24 hours</li>
+      <li><strong>Effective Date:</strong> January 1, 2024</li>
+      <li><strong>Last Updated:</strong> March 2026</li>
+    </ul>
+    <p style="margin-top:20px">See also our full <a href="privacy_policy.html" style="color:var(--pink)">Privacy Policy</a>.</p>
+  </section>
+
+</div>
+
+<footer>
+  <div class="footer-logo">Omegram</div>
+  <p>© 2024–2026 OMEGRAM. All rights reserved.</p>
+  <p style="margin-top:8px">
+    <a href="privacy_policy.html">Privacy Policy</a> &nbsp;·&nbsp;
+    <a href="child_safety.html">Child Safety Policy</a> &nbsp;·&nbsp;
+    <a href="mailto:omegramdev@gmail.com">Contact</a>
+  </p>
+</footer>
+
+</body>
+</html>
