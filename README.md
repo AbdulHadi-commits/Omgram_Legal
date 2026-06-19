@@ -8,5 +8,4 @@ python test_models.py
 
 
 
-
-ls -lh models/
+rm models/efficientnet_b4_best.pth models/classes.txt
