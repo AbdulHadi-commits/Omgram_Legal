@@ -20,37 +20,43 @@ export GATE_DEVICE_TOKEN="fyp_gate_secret-2026"
 python gate_sync.py --folder recordings/car_photos/ --preprocess auto
 
 
-venv) hadi@hadi-desktop:~/orange_pi_deploy$ python gate_sync.py --folder recordings/car_photos/ --preprocess auto
-Loading models on Pi...
-Device: cpu
-Plate detector : /home/hadi/orange_pi_deploy/models/plate_best.pt
-Char recognizer: /home/hadi/orange_pi_deploy/models/char_best.pt
-VMMR checkpoint: /home/hadi/orange_pi_deploy/models/efficientnet_b4_best.pth
-VMMR classes   : 245
-Load times (s): {'plate_detector': 0.06, 'char_recognizer': 0.06, 'vmmr_classifier': 1.07}
+python3 << 'PYEOF'
+from pathlib import Path
 
-Syncing 20 image(s) to Live Feed
+path = Path("gate_sync.py")
+text = path.read_text()
 
-Pipeline: DSC_1014_JPG.rf.8d3517f2b6b3c431921e79f0c7288b08.jpg
-WARNING ⚠️ imgsz=[380] must be multiple of max stride 32, updating to [384]
-  Plate   : MND-486
-  Vehicle : Suzuki_Mehran (72.6%)
-  Weather : rain
-  Time    : 1619 ms
-Traceback (most recent call last):
-  File "/home/hadi/orange_pi_deploy/gate_sync.py", line 245, in <module>
-    raise SystemExit(main())
-                     ^^^^^^
-  File "/home/hadi/orange_pi_deploy/gate_sync.py", line 236, in main
-    sync_folder(Path(args.folder), models, args)
-  File "/home/hadi/orange_pi_deploy/gate_sync.py", line 110, in sync_folder
-    sync_image(img, models, args)
-  File "/home/hadi/orange_pi_deploy/gate_sync.py", line 98, in sync_image
-    site = post_to_vercel(args.api, args.gate_token, result, dry_run=args.dry_run)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/hadi/orange_pi_deploy/gate_sync.py", line 90, in post_to_vercel
-    response.raise_for_status()
-  File "/home/hadi/orange_pi_deploy/venv/lib/python3.12/site-packages/requests/models.py", line 1167, in raise_for_status
-    raise HTTPError(http_error_msg, response=self)
-requests.exceptions.HTTPError: 413 Client Error: Request Entity Too Large for url: https://automated-gate-access.vercel.app/api/gate/ingest
+old = '''def pil_to_data_url(pil_img: Image.Image) -> str:
+    buf = io.BytesIO()
+    pil_img.convert("RGB").save(buf, format="JPEG", quality=88)
+    encoded = base64.b64encode(buf.getvalue()).decode("ascii")
+    return f"data:image/jpeg;base64,{encoded}"'''
+
+new = '''def pil_to_data_url(pil_img: Image.Image, max_side: int = 800, quality: int = 72) -> str:
+    """Resize + compress so JSON payload stays under Vercel's ~4.5 MB limit."""
+    img = pil_img.convert("RGB")
+    w, h = img.size
+    if max(w, h) > max_side:
+        scale = max_side / max(w, h)
+        img = img.resize((int(w * scale), int(h * scale)), Image.Resampling.LANCZOS)
+    buf = io.BytesIO()
+    img.save(buf, format="JPEG", quality=quality, optimize=True)
+    raw = buf.getvalue()
+    if len(raw) > 2_800_000:
+        buf = io.BytesIO()
+        img.save(buf, format="JPEG", quality=55, optimize=True)
+        raw = buf.getvalue()
+    encoded = base64.b64encode(raw).decode("ascii")
+    return f"data:image/jpeg;base64,{encoded}"'''
+
+if old not in text:
+    print("Already patched or file changed — check gate_sync.py manually")
+else:
+    path.write_text(text.replace(old, new))
+    print("Patched OK")
+
+
+
+    
+PYEOFaccess.vercel.app/api/gate/ingest
 (venv) hadi@hadi-desktop:~/orange_pi_deploy$ 
