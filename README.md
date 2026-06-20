@@ -13,4 +13,20 @@ done
 
 
 
+cd ~/orange_pi_deploy
+
+curl -fsSL -o gate_sync.py \
+  https://raw.githubusercontent.com/AbdullahYaseen01/webfyp/main/pi/gate_sync.py
+
+curl -fsSL -o preprocessing.py \
+  https://raw.githubusercontent.com/AbdullahYaseen01/webfyp/main/pi/preprocessing.py
+
+curl -fsSL -o pipeline.py \
+  https://raw.githubusercontent.com/AbdullahYaseen01/webfyp/main/pi/pipeline.py
+
+sed -i 's/\r$//' gate_sync.py preprocessing.py pipeline.py
+
+echo "Updated OK"
+grep -n "_event_dedup_key" gate_sync.py
+
 
