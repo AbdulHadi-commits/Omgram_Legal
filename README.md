@@ -11,7 +11,9 @@ python gate_sync.py --video recordings/car_photos/WIN_20260620_02_18_38_Pro.mp4 
 
 
 
-timedatectl
-sudo timedatectl set-ntp true
+sudo apt-get update
+sudo apt-get install -y systemd-timesyncd
+sudo systemctl enable systemd-timesyncd
+sudo systemctl start systemd-timesyncd
 
 
