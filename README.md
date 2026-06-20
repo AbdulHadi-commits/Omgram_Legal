@@ -13,60 +13,6 @@ done
 
 
 
-cd ~/orange_pi_deploy
-
-python3 << 'PATCH'
-from pathlib import Path
-import re
-
-p = Path("gate_sync.py")
-t = p.read_text()
-
-t = re.sub(r"timeout=\d+", "timeout=180", t)
-t = re.sub(r"retries=\d+", "retries=5", t)
-t = re.sub(r"max_side: int = \d+", "max_side: int = 480", t)
-t = re.sub(r"quality: int = \d+", "quality: int = 55", t)
-t = re.sub(r"400_000", "250_000", t)
-
-if "--skip" not in t:
-    t = t.replace(
-        'parser.add_argument("--delay"',
-        'parser.add_argument("--skip", type=int, default=0, help="Folder: skip first N images")\n'
-        '    parser.add_argument("--upload-timeout", type=int, default=180)\n'
-        '    parser.add_argument("--retries", type=int, default=5)\n'
-        '    parser.add_argument("--delay"'
-    )
-
-if "args.skip" not in t and "def sync_folder" in t:
-    t = t.replace(
-        'print(f"Syncing {len(images)} image(s) to Live Feed\\n")',
-        'if args.skip > 0:\n'
-        '        images = images[args.skip:]\n'
-        '        print(f"Skipping first {args.skip}, {len(images)} remaining\\n")\n'
-        '    print(f"Syncing {len(images)} image(s) to Live Feed\\n"'
-    )
-
-# Ensure sync_image does not crash the whole folder on one failure
-if "return False" not in t.split("def sync_image")[1].split("def sync_folder")[0]:
-    old = "    site = post_to_vercel(args.api, args.gate_token, result, dry_run=args.dry_run)\n"
-    new = (
-        "    try:\n"
-        "        site = post_to_vercel(args.api, args.gate_token, result, dry_run=args.dry_run)\n"
-        "        print(f\"  Website : event id {site.get('event', {}).get('id')} -> {site.get('gate_action')}\\n\")\n"
-        "        return True\n"
-        "    except Exception as err:\n"
-        "        print(f\"  Website : FAILED ({err})\\n\")\n"
-        "        return False\n"
-    )
-    if old in t:
-        t = t.replace(
-            old + '        print(f"  Website : event id {site.get(\'event\', {}).get(\'id\')} → {site.get(\'gate_action\')}\\n")\n        return True\n    except Exception as err:\n        print(f"  Website : FAILED ({err})\\n")\n        return False\n',
-            new
-        )
-
-p.write_text(t)
-import py_compile
-py_compile.compile(str(p), doraise=True)
-print("Upload fix applied OK")
-PATCH
-
+scp "d:\fyp-complete\FYP COMPLETE\orange_pi_deploy\gate_sync.py" hadi@YOUR_PI_IP:~/orange_pi_deploy/gate_sync.py
+python3 -m py_compile ~/orange_pi_deploy/gate_sync.py && echo OK
+cp ~/orange_pi_deploy/gate_sync.py.broken ~/orange_pi_deploy/gate_sync.py
