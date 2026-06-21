@@ -1,23 +1,3 @@
-sudo apt-get update
-sudo apt-get install -y v4l-utils ffmpeg
-
-cd ~/orange_pi_deploy
-source venv/bin/activate
-
-pip uninstall opencv-python-headless -y
-pip install opencv-python
-
-export GATE_API_URL="https://automated-gate-access.vercel.app/api"
-export GATE_DEVICE_TOKEN="fyp_gate_secret-2026"
-echo 'export GATE_API_URL="https://automated-gate-access.vercel.app/api"' >> ~/.bashrc
-echo 'export GATE_DEVICE_TOKEN="fyp_gate_secret-2026"' >> ~/.bashrc
-source ~/.bashrc
-
-ls /dev/video*
-v4l2-ctl --list-devices
-
-
-
 
 cd ~/orange_pi_deploy
 source venv/bin/activate
@@ -36,14 +16,36 @@ done
 
 
 
-cd ~/orange_pi_deploy
-source venv/bin/activate
-
 pip uninstall opencv-python-headless opencv-python -y
 pip install opencv-python
+python -c "import cv2; print('OpenCV OK:', hasattr(cv2, 'imshow'))"
 
-python -c "import cv2; print(cv2.__version__); print(hasattr(cv2, 'imshow'))"
+
+
+
+sudo apt-get install -y v4l-utils
+ls /dev/video*
+v4l2-ctl --list-devices
+
+
+
+ffmpeg -f v4l2 -i /dev/video0 -frames:v 1 /tmp/test_cam.jpg -y
+ls -lh /tmp/test_cam.jpg
+
+
 python test_models.py
+
+python run_webcam.py --camera 0 --width 1280 --height 720 --preprocess none --skip 2
+
+python run_webcam.py --camera 1 --width 1280 --height 720 --preprocess none --skip 2
+
+export GATE_API_URL="https://automated-gate-access.vercel.app/api"
+export GATE_DEVICE_TOKEN="fyp_gate_secret-2026"
+
+python gate_sync.py --webcam --camera 0 --interval 15 --preprocess none
+
+
+
 
 
 
