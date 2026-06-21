@@ -35,7 +35,15 @@ for f in recordings/car_photos/*.mp4; do
 
 
 
-pip install opencv-python --no-cache-dir
+cd ~/orange_pi_deploy
+source venv/bin/activate
+
+pip uninstall opencv-python-headless opencv-python -y
+pip install opencv-python
+
+python -c "import cv2; print(cv2.__version__); print(hasattr(cv2, 'imshow'))"
+python test_models.py
+
 
 
 
