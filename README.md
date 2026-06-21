@@ -29,8 +29,9 @@ date
 python gate_sync.py --folder recordings/car_photos/ --preprocess none --delay 5
 
 for f in recordings/car_photos/*.mp4; do
+  echo "Processing video: $f"
   python gate_sync.py --video "$f" --every 1 --max-frames 5 --preprocess none --delay 5
-
+done
 
 
 
