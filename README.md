@@ -1,20 +1,12 @@
-NODE_CFG="/usr/NX/etc/node.cfg"
-sudo cp -a "$NODE_CFG" "${NODE_CFG}.bak"
+cd ~/orange_pi_deploy
+source venv/bin/activate
 
-sudo sed -i 's/^#\?EnableHardwareEncoding .*/EnableHardwareEncoding 0/' "$NODE_CFG"
-grep -q '^EnableHardwareEncoding ' "$NODE_CFG" || echo 'EnableHardwareEncoding 0' | sudo tee -a "$NODE_CFG"
 
-sudo sed -i 's/^#\?EnableDisplayServerVideoCodec .*/EnableDisplayServerVideoCodec 1/' "$NODE_CFG"
-grep -q '^EnableDisplayServerVideoCodec ' "$NODE_CFG" || echo 'EnableDisplayServerVideoCodec 1' | sudo tee -a "$NODE_CFG"
+export GATE_API_URL="https://automated-gate-access.vercel.app/api"
+export GATE_DEVICE_TOKEN="fyp_gate_secret-2026"
 
-sudo sed -i 's/^#\?DisplayServerVideoCodec .*/DisplayServerVideoCodec mjpeg/' "$NODE_CFG"
-grep -q '^DisplayServerVideoCodec ' "$NODE_CFG" || echo 'DisplayServerVideoCodec mjpeg' | sudo tee -a "$NODE_CFG"
 
-sudo sed -i 's/#WaylandEnable=false/WaylandEnable=false/' /etc/gdm3/custom.conf 2>/dev/null
-grep -q '^WaylandEnable=false' /etc/gdm3/custom.conf 2>/dev/null || echo 'WaylandEnable=false' | sudo tee -a /etc/gdm3/custom.conf 2>/dev/null
+python gate_sync.py --folder recordings/car_photos/ --preprocess none --delay 5
 
-echo -e "[Desktop]\nSession=ubuntu-xorg" | sudo tee /home/hadi/.dmrc
-sudo chown hadi:hadi /home/hadi/.dmrc
 
-sudo /usr/NX/bin/nxserver --restart
-echo "Pi fix done — log out and back in on Pi, then reconnect NoMachine"
+python gate_sync.py --video recordings/car_photos/myvideo.mp4 --every 1 --max-frames 5 --preprocess none --delay 5
